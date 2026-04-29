@@ -1,0 +1,60 @@
+# Wazuh SOC Lab - GitIgnore
+
+# Sensitive Information
+*.key
+*.pem
+*.crt
+*password*
+*credentials*
+.env
+secrets/
+
+# Wazuh specific
+ossec.conf
+client.keys
+agent.conf
+
+# Logs
+*.log
+logs/
+*.pcap
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+temp/
+tmp/
+
+# Screenshots (add manually if needed)
+screenshots/*.png
+screenshots/*.jpg
+
+# Metasploit
+*.rc
+*.msf
+*.dat
+
+# Personal notes
+notes.md
+TODO.md

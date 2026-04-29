@@ -1,0 +1,42 @@
+<group name="custom,attack,">
+
+  <!-- Enhanced Brute Force Detection - MITRE T1110 -->
+  <rule id="100002" level="12">
+    <if_sid>60204</if_sid>
+    <description>[CUSTOM SOC LAB] Brute Force Attack Detected - MITRE T1110</description>
+    <mitre>
+      <id>T1110</id>
+    </mitre>
+  </rule>
+
+  <!-- PowerShell Bypass Detection - MITRE T1059.001 -->
+  <rule id="100003" level="12">
+    <if_sid>61600,61601,61603,61608</if_sid>
+    <match>bypass|encodedcommand|iex|invoke-expression</match>
+    <description>[CUSTOM SOC LAB] Suspicious PowerShell Command Detected - MITRE T1059.001</description>
+    <mitre>
+      <id>T1059.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Privilege Escalation Detection - MITRE T1068 -->
+  <rule id="100004" level="12">
+    <if_sid>61600,61601,61603</if_sid>
+    <match>runas|elevate</match>
+    <description>[CUSTOM SOC LAB] Privilege Escalation Attempt - MITRE T1068</description>
+    <mitre>
+      <id>T1068</id>
+    </mitre>
+  </rule>
+
+  <!-- Credential Dumping Detection - MITRE T1003 -->
+  <rule id="100005" level="15">
+    <if_sid>61600,61601,61603</if_sid>
+    <match>lsass|mimikatz|procdump</match>
+    <description>[CUSTOM SOC LAB] Credential Dumping Attempt - MITRE T1003</description>
+    <mitre>
+      <id>T1003</id>
+    </mitre>
+  </rule>
+
+</group>
