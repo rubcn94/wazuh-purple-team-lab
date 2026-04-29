@@ -1,53 +1,55 @@
-# 🛡️ Purple Team SOC Lab with Wazuh
+# 🛡️ Laboratorio Purple Team SOC con Wazuh
 
-> Advanced Security Operations Center laboratory featuring MITRE ATT&CK detection, C2 simulation, and AI-powered log analysis.
+> Laboratorio avanzado de Security Operations Center con detección MITRE ATT&CK, simulación C2 y análisis de logs asistido por IA.
 
-![Lab Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![MITRE Coverage](https://img.shields.io/badge/MITRE%20Coverage-10%2B%20Techniques-blue)
-![Platform](https://img.shields.io/badge/Platform-Wazuh%204.9-orange)
+![Estado del Lab](https://img.shields.io/badge/Estado-Activo-brightgreen)
+![Cobertura MITRE](https://img.shields.io/badge/Cobertura%20MITRE-10%2B%20T%C3%A9cnicas-blue)
+![Plataforma](https://img.shields.io/badge/Plataforma-Wazuh%204.9-orange)
+
+📖 **[English Version](README-ENG.md)**
 
 ---
 
-## 📋 Table of Contents
+## 📋 Tabla de Contenidos
 
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Features](#features)
-- [MITRE ATT&CK Coverage](#mitre-attck-coverage)
-- [Project Status](#project-status)
-- [Quick Start](#quick-start)
-- [Documentation](#documentation)
+- [Descripción General](#descripción-general)
+- [Arquitectura](#arquitectura)
+- [Funcionalidades](#funcionalidades)
+- [Cobertura MITRE ATT&CK](#cobertura-mitre-attck)
+- [Estado del Proyecto](#estado-del-proyecto)
+- [Inicio Rápido](#inicio-rápido)
+- [Documentación](#documentación)
 - [Roadmap](#roadmap)
-- [Skills Demonstrated](#skills-demonstrated)
+- [Habilidades Demostradas](#habilidades-demostradas)
 
 ---
 
-## 🎯 Overview
+## 🎯 Descripción General
 
-This project demonstrates a fully functional **Purple Team SOC Lab** built from scratch, combining:
+Este proyecto demuestra un **Laboratorio Purple Team SOC** completamente funcional construido desde cero, combinando:
 
-- **Blue Team**: Wazuh SIEM for detection and monitoring
-- **Red Team**: C2 framework (Metasploit) for attack simulation
-- **Purple Team**: Continuous improvement cycle of attack → detect → improve
+- **Blue Team**: Wazuh SIEM para detección y monitoreo
+- **Red Team**: C2 framework (Metasploit) para simulación de ataques
+- **Purple Team**: Ciclo de mejora continua ataque → detectar → mejorar
 
-**Purpose**: Portfolio project showcasing practical SOC skills for cybersecurity analyst roles, with a focus on MITRE ATT&CK framework and AI-assisted security operations.
+**Propósito**: Proyecto de portfolio que demuestra habilidades prácticas de SOC para roles de analista de ciberseguridad, con enfoque en el framework MITRE ATT&CK y operaciones de seguridad asistidas por IA.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Arquitectura
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Purple Team Lab                          │
+│                   Laboratorio Purple Team                   │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  ┌──────────────┐          ┌──────────────────────┐       │
 │  │   Windows    │          │   Ubuntu Server      │       │
 │  │   Endpoint   │◄────────►│                      │       │
-│  │              │   Agent   │  ┌────────────────┐ │       │
-│  │ - Wazuh Agent│          │  │ Wazuh Manager  │ │       │
-│  │ - PowerShell │          │  │ Wazuh Indexer  │ │       │
-│  │   Logging    │          │  │ Wazuh Dashboard│ │       │
+│  │              │   Agente  │  ┌────────────────┐ │       │
+│  │ - Agente Wazuh│         │  │ Wazuh Manager  │ │       │
+│  │ - Logging    │          │  │ Wazuh Indexer  │ │       │
+│  │   PowerShell │          │  │ Wazuh Dashboard│ │       │
 │  │              │          │  └────────────────┘ │       │
 │  └──────────────┘          │                      │       │
 │         ▲                  │  ┌────────────────┐ │       │
@@ -57,242 +59,291 @@ This project demonstrates a fully functional **Purple Team SOC Lab** built from 
 │                            │                      │       │
 │                            └──────────────────────┘       │
 │                                                             │
-│  Network: 192.168.1.0/24 (VirtualBox Host-Only)           │
+│  Red: 192.168.1.0/24 (VirtualBox Host-Only)               │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### Components:
+### Componentes:
 
-- **Wazuh Manager**: Security event management and correlation
-- **Wazuh Indexer**: Log storage and search (OpenSearch-based)
-- **Wazuh Dashboard**: Web UI for visualization and analysis
-- **Windows Agent**: Monitored endpoint with PowerShell logging
-- **C2 Framework**: Metasploit for simulating real-world attacks
-
----
-
-## ✨ Features
-
-### Implemented (✅)
-
-- **✅ SIEM Deployment**: Wazuh 4.9 all-in-one installation
-- **✅ Agent Management**: Windows agent with custom configuration
-- **✅ PowerShell Logging**: Advanced script block logging
-- **✅ Custom Detection Rules**: MITRE ATT&CK-mapped rules
-- **✅ C2 Integration**: Metasploit Meterpreter for attack simulation
-- **✅ Attack Simulation**: Automated scripts for common techniques
-- **✅ MITRE Mapping**: 10+ techniques detected and documented
-
-### In Progress (🚧)
-
-- **🚧 Active Response**: Automated blocking and remediation
-- **🚧 Threat Intelligence**: AlienVault OTX integration
-- **🚧 Custom Dashboards**: MITRE ATT&CK heatmap visualization
-
-### Planned (📅)
-
-- **📅 AI Integration**: RAG-based log analysis with LLM
-- **📅 Anomaly Detection**: ML-based behavioral analysis
-- **📅 Cloud Migration**: Terraform deployment to AWS/Azure
-- **📅 Compliance**: PCI-DSS and GDPR policy implementation
+- **Wazuh Manager**: Gestión y correlación de eventos de seguridad
+- **Wazuh Indexer**: Almacenamiento y búsqueda de logs (basado en OpenSearch)
+- **Wazuh Dashboard**: Interfaz web para visualización y análisis
+- **Agente Windows**: Endpoint monitoreado con logging de PowerShell
+- **C2 Framework**: Metasploit para simular ataques del mundo real
 
 ---
 
-## 🎖️ MITRE ATT&CK Coverage
+## ✨ Funcionalidades
 
-### Tactics & Techniques Detected:
+### Implementadas (✅)
 
-| Technique ID | Technique Name | Detection Method | Status |
-|--------------|----------------|------------------|--------|
-| **T1110** | Brute Force | Failed login correlation | ✅ Active |
-| **T1059.001** | PowerShell | Script block logging + regex | ✅ Active |
-| **T1083** | File/Directory Discovery | Sysmon + Wazuh rules | ✅ Active |
-| **T1082** | System Information Discovery | Process monitoring | ✅ Active |
-| **T1057** | Process Discovery | Process enumeration detection | ✅ Active |
-| **T1113** | Screen Capture | Meterpreter command logging | ✅ Active |
-| **T1078** | Valid Accounts | Account usage anomalies | ✅ Active |
-| **T1003** | Credential Dumping | LSASS access monitoring | 🚧 Configured |
-| **T1068** | Privilege Escalation | Runas/UAC bypass detection | 🚧 Configured |
-| **T1021** | Remote Services | RDP/SMB monitoring | 📅 Planned |
+- **✅ Despliegue SIEM**: Instalación all-in-one de Wazuh 4.9
+- **✅ Gestión de Agentes**: Agente Windows con configuración personalizada
+- **✅ Logging PowerShell**: Logging avanzado de script block
+- **✅ Reglas de Detección Personalizadas**: Reglas mapeadas a MITRE ATT&CK
+- **✅ Integración C2**: Metasploit Meterpreter para simulación de ataques
+- **✅ Simulación de Ataques**: Scripts automatizados para técnicas comunes
+- **✅ Mapeo MITRE**: 10+ técnicas detectadas y documentadas
 
-**Coverage**: 10+ techniques actively detected and tested
+### En Progreso (🚧)
+
+- **🚧 Active Response**: Bloqueo y remediación automática
+- **🚧 Threat Intelligence**: Integración con AlienVault OTX
+- **🚧 Dashboards Personalizados**: Visualización de heatmap MITRE ATT&CK
+
+### Planificadas (📅)
+
+- **📅 Integración IA**: Análisis de logs basado en RAG con LLM
+- **📅 Detección de Anomalías**: Análisis comportamental basado en ML
+- **📅 Migración Cloud**: Despliegue con Terraform en AWS/Azure
+- **📅 Compliance**: Implementación de políticas PCI-DSS y GDPR
 
 ---
 
-## 📊 Project Status
+## 🎖️ Cobertura MITRE ATT&CK
 
-### Phase 1: Foundation ✅ COMPLETED
+### Tácticas y Técnicas Detectadas:
 
-- [x] Wazuh infrastructure deployed
-- [x] Windows agent configured
-- [x] PowerShell logging enabled
-- [x] Network connectivity established
-- [x] Basic detection rules implemented
+| ID Técnica | Nombre de la Técnica | Método de Detección | Estado |
+|-----------|---------------------|---------------------|--------|
+| **T1110** | Brute Force | Correlación de logins fallidos | ✅ Activo |
+| **T1059.001** | PowerShell | Script block logging + regex | ✅ Activo |
+| **T1083** | File/Directory Discovery | Sysmon + reglas Wazuh | ✅ Activo |
+| **T1082** | System Information Discovery | Monitoreo de procesos | ✅ Activo |
+| **T1057** | Process Discovery | Detección de enumeración | ✅ Activo |
+| **T1113** | Screen Capture | Logging de comandos Meterpreter | ✅ Activo |
+| **T1078** | Valid Accounts | Anomalías de uso de cuentas | ✅ Activo |
+| **T1003** | Credential Dumping | Monitoreo de acceso a LSASS | 🚧 Configurado |
+| **T1068** | Privilege Escalation | Detección de bypass UAC/Runas | 🚧 Configurado |
+| **T1021** | Remote Services | Monitoreo RDP/SMB | 📅 Planificado |
 
-### Phase 2: Purple Team Operations 🚧 IN PROGRESS (70%)
+**Cobertura**: 10+ técnicas activamente detectadas y testeadas
 
-- [x] C2 framework deployed (Metasploit)
-- [x] Implant generation and execution
-- [x] Attack simulations executed
-- [x] Detections validated
-- [ ] Active Response configured
-- [ ] Threat Intelligence integrated
-- [ ] Custom dashboards created
+---
 
-### Phase 3: AI Integration 📅 PLANNED
+## 📊 Estado del Proyecto
 
-- [ ] RAG system for log analysis
-- [ ] LLM-powered incident reporting
-- [ ] Anomaly detection with ML
-- [ ] Auto-IOC generation
+### Fase 1: Fundación ✅ COMPLETADA
 
-### Phase 4: Cloud & Compliance 📅 PLANNED
+- [x] Infraestructura Wazuh desplegada
+- [x] Agente Windows configurado
+- [x] Logging PowerShell habilitado
+- [x] Conectividad de red establecida
+- [x] Reglas de detección básicas implementadas
+
+### Fase 2: Operaciones Purple Team 🚧 EN PROGRESO (70%)
+
+- [x] C2 framework desplegado (Metasploit)
+- [x] Generación y ejecución de implant
+- [x] Simulaciones de ataque ejecutadas
+- [x] Detecciones validadas
+- [ ] Active Response configurado
+- [ ] Threat Intelligence integrado
+- [ ] Dashboards personalizados creados
+
+### Fase 3: Integración IA 📅 PLANIFICADA
+
+- [ ] Sistema RAG para análisis de logs
+- [ ] Generación de informes de incidentes con LLM
+- [ ] Detección de anomalías con ML
+- [ ] Generación automática de IOCs
+
+### Fase 4: Cloud y Compliance 📅 PLANIFICADA
 
 - [ ] Terraform IaC
-- [ ] AWS/Azure deployment
-- [ ] Compliance frameworks (PCI-DSS, GDPR)
-- [ ] SIEM integration (Sentinel/Splunk)
+- [ ] Despliegue AWS/Azure
+- [ ] Frameworks de compliance (PCI-DSS, GDPR)
+- [ ] Integración SIEM (Sentinel/Splunk)
 
-**Overall Progress**: ~40% complete
+**Progreso General**: ~40% completado
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
-### Prerequisites
+### Requisitos Previos
 
-- VirtualBox (or VMware)
-- Ubuntu Server 24.04 LTS (minimum 8GB RAM)
-- Windows 10/11 (minimum 4GB RAM)
-- Network: Host-Only Adapter configured
+- VirtualBox (o VMware)
+- Ubuntu Server 24.04 LTS (mínimo 8GB RAM)
+- Windows 10/11 (mínimo 4GB RAM)
+- Red: Adaptador Host-Only configurado
 
-### Installation
+### Instalación
 
-1. **Deploy Wazuh (Ubuntu Server)**
+1. **Desplegar Wazuh (Ubuntu Server)**
 
 ```bash
-# Install Wazuh all-in-one
+# Instalar Wazuh all-in-one
 curl -sO https://packages.wazuh.com/4.9/wazuh-install.sh
 sudo bash ./wazuh-install.sh -a
 
-# Save credentials shown at the end
+# Guardar credenciales mostradas al final
 ```
 
-2. **Configure Windows Agent**
+2. **Configurar Agente Windows**
 
 ```powershell
-# Download and install agent from Wazuh dashboard
+# Descargar e instalar agente desde el dashboard de Wazuh
 # Settings → Agents → Deploy new agent
 
-# Enable PowerShell logging
+# Habilitar logging PowerShell
 .\scripts\Enable-PowerShellLogging.ps1
 ```
 
-3. **Deploy Custom Rules**
+3. **Desplegar Reglas Personalizadas**
 
 ```bash
-# Copy custom rules to Wazuh
+# Copiar reglas personalizadas a Wazuh
 sudo nano /var/ossec/etc/rules/local_rules.xml
-# Paste rules from docs/custom-rules.xml
+# Pegar reglas desde docs/custom-rules.xml
 
-# Restart Wazuh
+# Reiniciar Wazuh
 sudo systemctl restart wazuh-manager
 ```
 
-4. **Run Attack Simulations**
+4. **Ejecutar Simulaciones de Ataque**
 
 ```powershell
-# Execute attack simulator
+# Ejecutar simulador de ataques
 .\scripts\SOC-Lab-Attack-Simulator.ps1 -AttackType All
 ```
 
-5. **Access Dashboard**
+5. **Acceder al Dashboard**
 
 ```
-URL: https://<WAZUH_SERVER_IP>
-User: admin
-Password: <from_installation>
+URL: https://<IP_SERVIDOR_WAZUH>
+Usuario: admin
+Contraseña: <de_la_instalación>
 ```
 
 ---
 
-## 📚 Documentation
+## 📚 Documentación
 
-### Technical Guides
+### Guías Técnicas
 
-- **[Setup Guide](docs/01-Setup-Guide.md)**: Detailed installation instructions
-- **[Attack Simulation](docs/02-Attack-Simulation.md)**: How to run C2 attacks
-- **[Detection Rules](docs/03-Detection-Rules.md)**: Custom Wazuh rules explained
-- **[MITRE Mapping](docs/04-MITRE-Mapping.md)**: Full coverage matrix
+- **[Guía de Instalación](docs/01-Guia-Instalacion.md)**: Instrucciones detalladas de instalación
+- **[Simulación de Ataques](docs/02-Simulacion-Ataques.md)**: Cómo ejecutar ataques C2
+- **[Reglas de Detección](docs/03-Reglas-Deteccion.md)**: Reglas personalizadas de Wazuh explicadas
+- **[Mapeo MITRE](docs/04-Mapeo-MITRE.md)**: Matriz de cobertura completa
 
 ### Scripts
 
-- **[SOC-Lab-Attack-Simulator.ps1](scripts/SOC-Lab-Attack-Simulator.ps1)**: Automated attack generation
-- **[Enable-PowerShellLogging.ps1](scripts/Enable-PowerShellLogging.ps1)**: PowerShell audit configuration
-- **[Custom Wazuh Rules](config/local_rules.xml)**: MITRE-mapped detection rules
+- **[SOC-Lab-Attack-Simulator.ps1](scripts/SOC-Lab-Attack-Simulator.ps1)**: Generación automática de ataques
+- **[Enable-PowerShellLogging.ps1](scripts/Enable-PowerShellLogging.ps1)**: Configuración de auditoría PowerShell
+- **[Reglas Personalizadas Wazuh](config/local_rules.xml)**: Reglas de detección mapeadas a MITRE
 
 ### Roadmap
 
-- **[Complete Roadmap](docs/SOC-Lab-Roadmap.md)**: Full project plan (Levels 1-4)
-- **[Progress Tracking](docs/PROGRESS.md)**: Current status and next steps
+- **[Roadmap Completo](docs/SOC-Lab-Roadmap.md)**: Plan completo del proyecto (Niveles 1-4)
+- **[Seguimiento de Progreso](docs/PROGRESS.md)**: Estado actual y próximos pasos
 
 ---
 
-## 💼 Skills Demonstrated
+## 🗺️ Roadmap
 
-### Technical Skills
+### Hitos Completados
 
-- **SIEM Deployment & Configuration**: Wazuh full stack
-- **Detection Engineering**: Custom rules mapped to MITRE ATT&CK
-- **Attack Simulation**: C2 frameworks (Metasploit, Sliver)
-- **Log Analysis**: PowerShell script block logging, Windows Event Log
-- **Incident Response**: Purple Team methodology
-- **Network Security**: VirtualBox network isolation and configuration
-- **Linux Administration**: Ubuntu Server, systemd, firewall management
-- **Scripting**: PowerShell, Bash, Python (planned)
+- ✅ **Nivel 1**: SIEM básico con detección
+- ✅ **Nivel 2 (70%)**: Purple Team con simulación C2
 
-### Frameworks & Standards
+### Próximos Hitos
+
+- 🚧 **Completar Nivel 2**: Active Response + Threat Intel (1-2 semanas)
+- 📅 **Nivel 3**: Integración IA (2-3 semanas)
+- 📅 **Nivel 4**: Migración Cloud (opcional, 1-2 semanas)
+
+**Finalización estimada**: 4-6 semanas desde el inicio
+
+---
+
+## 💼 Habilidades Demostradas
+
+### Habilidades Técnicas
+
+- **Despliegue y Configuración SIEM**: Stack completo de Wazuh
+- **Ingeniería de Detección**: Reglas personalizadas mapeadas a MITRE ATT&CK
+- **Simulación de Ataques**: C2 frameworks (Metasploit, Sliver)
+- **Análisis de Logs**: Script block logging de PowerShell, Windows Event Log
+- **Respuesta a Incidentes**: Metodología Purple Team
+- **Seguridad de Red**: Aislamiento y configuración de red en VirtualBox
+- **Administración Linux**: Ubuntu Server, systemd, gestión de firewall
+- **Scripting**: PowerShell, Bash, Python (planificado)
+
+### Frameworks y Estándares
 
 - MITRE ATT&CK Framework
-- NIST Cybersecurity Framework (detection & response)
-- Kill Chain methodology
-- Purple Team operations
+- NIST Cybersecurity Framework (detección y respuesta)
+- Metodología Kill Chain
+- Operaciones Purple Team
+
+### Habilidades Blandas
+
+- Documentación técnica
+- Resolución sistemática de problemas
+- Investigación en seguridad y autoaprendizaje
+- Planificación y ejecución de proyectos
 
 ---
 
-## 🎓 Learning Outcomes
+## 🎓 Resultados de Aprendizaje
 
-This project demonstrates practical knowledge of:
+Este proyecto demuestra conocimiento práctico de:
 
-1. **SOC Operations**: Real-world SIEM deployment and tuning
-2. **Threat Detection**: Building custom detection rules
-3. **Purple Teaming**: Combining offensive and defensive security
-4. **MITRE ATT&CK**: Mapping techniques to real-world detections
-5. **Incident Response**: Identifying and analyzing security events
+1. **Operaciones SOC**: Despliegue y ajuste de SIEM en el mundo real
+2. **Detección de Amenazas**: Construcción de reglas de detección personalizadas
+3. **Purple Teaming**: Combinación de seguridad ofensiva y defensiva
+4. **MITRE ATT&CK**: Mapeo de técnicas a detecciones reales
+5. **Respuesta a Incidentes**: Identificación y análisis de eventos de seguridad
 
-**Target Roles**: SOC Analyst, Security Engineer, Threat Detection Engineer, Purple Team Analyst
-
----
-
-## 📄 License
-
-This project is for educational and portfolio purposes.
-
-**Note**: All attack simulations are conducted in isolated lab environments. Do not use against systems you don't own.
+**Roles Objetivo**: SOC Analyst, Security Engineer, Threat Detection Engineer, Purple Team Analyst
 
 ---
 
-## 📊 Project Stats
+## 📧 Autor
 
-- **Start Date**: 2026-04-29
-- **Current Phase**: Level 2 - Purple Team (70%)
-- **Lines of Code**: ~500+ (scripts)
-- **Documentation Pages**: 5+ technical guides
-- **MITRE Techniques**: 10+ detected
-- **Time Invested**: ~15 hours
+**Ruben**
+- 🎯 **Objetivo**: SOC Analyst → AI Security Specialist
+- 🎓 **Formación**: ASIR (Administración de Sistemas Informáticos en Red)
+- 🔍 **Enfoque**: Operaciones Purple Team, seguridad asistida por IA, MITRE ATT&CK
+- 📍 **Ubicación**: Barcelona, España
+
+### Contacto
+
+- LinkedIn: [Tu LinkedIn]
+- GitHub: [Tu GitHub]
+- Portfolio: [Tu Sitio Portfolio]
 
 ---
 
-**Last Updated**: 2026-04-29
-**Status**: 🚧 Active Development
+## 📄 Licencia
+
+Este proyecto es para fines educativos y de portfolio.
+
+**Nota**: Todas las simulaciones de ataque se realizan en entornos de laboratorio aislados. No utilizar contra sistemas que no poseas.
+
+---
+
+## 🙏 Agradecimientos
+
+- [Wazuh](https://wazuh.com/) - Plataforma SIEM open-source
+- [MITRE ATT&CK](https://attack.mitre.org/) - Framework de threat intelligence
+- [Metasploit](https://www.metasploit.com/) - Framework de pentesting
+- Blogs y tutoriales de la comunidad de seguridad
+
+---
+
+## 📊 Estadísticas del Proyecto
+
+- **Fecha de Inicio**: 2026-04-29
+- **Fase Actual**: Nivel 2 - Purple Team (70%)
+- **Líneas de Código**: ~500+ (scripts)
+- **Páginas de Documentación**: 5+ guías técnicas
+- **Técnicas MITRE**: 10+ detectadas
+- **Tiempo Invertido**: ~15 horas (y contando)
+
+---
+
+**Última Actualización**: 2026-04-29
+**Estado**: 🚧 Desarrollo Activo
